@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 import Header from "../components/Header";
 import user from "../assets/user.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { loginRedux } from "../app/userSlice.js";
+import { toast } from "react-hot-toast";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [showPassword, setShowPassword] = useState(false);
 
   const [data, setData] = useState({
@@ -29,7 +35,24 @@ const Login = () => {
     e.preventDefault();
     const { email, password } = data;
     if (email && password) {
-      alert("success");
+      const fetchData = await fetch("http://localhost:8080/login", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const dataRes = await fetchData.json();
+
+      toast(dataRes.message);
+
+      if (dataRes.alert) {
+        dispatch(loginRedux(dataRes));
+        setTimeout(() => {
+          navigate("/");
+        }, 1000);
+      }
     } else {
       alert("Please Enter required fields");
     }

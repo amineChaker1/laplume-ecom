@@ -5,6 +5,7 @@ const Home = () => {
   return (
     <div>
       <Header />
+      <div className="pt-16  min-h-[calc(100vh)]">Home</div>
     </div>
   );
 };

@@ -1,8 +1,18 @@
 import React, { useState } from "react";
 import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutRedux } from "../app/userSlice";
+import { toast } from "react-hot-toast";
 const Header = () => {
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    dispatch(logoutRedux());
+    toast("Logout successfully");
+  };
   const [showMenu, setShowMenu] = useState(false);
+  const userData = useSelector((state) => state.user);
+  console.log(userData);
   return (
     <header className="fixed  bg-black shadow-md w-full h-16 px-2 md:px-4">
       <div className="flex justify-between items-center h-full">
@@ -35,31 +45,58 @@ const Header = () => {
               0
             </div>
           </div>
-          <div className="">
-            <svg
-              onClick={() => setShowMenu(!showMenu)}
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="w-4 md:h-6 h-4 md:w-6 text-white cursor-pointer"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
-              />
-            </svg>
+          <div onClick={() => setShowMenu(!showMenu)}>
+            {userData.image ? (
+              <div className="text-3xl cursor-pointer w-8 h-8 md:w-10 md:h-10 rounded-full overflow-hidden drop-shadow-md">
+                <img src={userData.image} className="w-full h-full" />
+              </div>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-4 md:h-6 h-4 md:w-6 text-white cursor-pointer"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+                />
+              </svg>
+            )}
+
             {showMenu && (
-              <div className="absolute right-2 bg-white py-2 px-2 shadow drop-shadow-md">
-                <Link to="/signup" className="whitespace-nowrap cursor-pointer">
-                  Signup
-                </Link>{" "}
+              <div className="absolute right-2 bg-white py-2 px-2 rounded-lg shadow drop-shadow-md">
+                {userData.image ? (
+                  <Link
+                    to="/signup"
+                    className="whitespace-nowrap cursor-pointer"
+                  >
+                    New Product
+                  </Link>
+                ) : (
+                  <Link
+                    to="/signup"
+                    className="whitespace-nowrap cursor-pointer"
+                  >
+                    Signup
+                  </Link>
+                )}{" "}
                 <br />
-                <Link to="login" className="whitespace-nowrap cursor-pointer">
-                  Login
-                </Link>
+                {userData.image ? (
+                  <p
+                    className="cursor-pointer whitespace-nowrap "
+                    onClick={handleLogout}
+                  >
+                    Logout ({userData.firstName}){" "}
+                  </p>
+                ) : (
+                  <Link to="login" className="whitespace-nowrap cursor-pointer">
+                    Login
+                  </Link>
+                )}
               </div>
             )}
           </div>

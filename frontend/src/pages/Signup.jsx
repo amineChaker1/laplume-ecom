@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import logo from "../assets/logo.png";
 import user from "../assets/user.png";
 import Header from "../components/Header";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ImagetoBase64 } from "../utility/imagetoBase64";
+import { toast } from "react-hot-toast";
 const Signup = () => {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [data, setData] = useState({
@@ -38,7 +40,21 @@ const Signup = () => {
     const { firstName, email, password, confirmPassword } = data;
     if (firstName && email && password && confirmPassword) {
       if (password === confirmPassword) {
-        alert("success");
+        const fetchData = await fetch("http://localhost:8080/signup", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+
+        const dataRes = await fetchData.json();
+
+        // alert(dataRes.message);
+        toast(dataRes.message);
+        if (dataRes.alert) {
+          navigate("/login");
+        }
       } else {
         alert("password and confirm password not equal");
       }
