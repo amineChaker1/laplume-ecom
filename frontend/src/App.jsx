@@ -10,11 +10,12 @@ import Menu from "./pages/Menu";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import NewProduct from "./pages/NewProduct";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setDataProduct } from "./app/productSlice";
 
 function App() {
   const dispatch = useDispatch();
+  const productData = useSelector((state) => state.product);
 
   useEffect(() => {
     (async () => {
@@ -24,6 +25,7 @@ function App() {
       dispatch(setDataProduct(resData));
     })();
   }, []);
+  console.log(productData);
   return (
     <div className="App">
       <Routes>
