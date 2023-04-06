@@ -70,12 +70,14 @@ const Header = () => {
             {showMenu && (
               <div className="absolute right-2 bg-white py-2 px-2 rounded-lg shadow drop-shadow-md">
                 {userData.image ? (
-                  <Link
-                    to="/signup"
-                    className="whitespace-nowrap cursor-pointer"
-                  >
-                    New Product
-                  </Link>
+                  userData.email === import.meta.env.VITE_ADMIN_EMAIL && (
+                    <Link
+                      to={"new"}
+                      className="whitespace-nowrap cursor-pointer px-2"
+                    >
+                      New product
+                    </Link>
+                  )
                 ) : (
                   <Link
                     to="/signup"
