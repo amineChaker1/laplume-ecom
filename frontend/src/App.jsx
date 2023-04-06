@@ -10,14 +10,18 @@ import Menu from "./pages/Menu";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import NewProduct from "./pages/NewProduct";
+import { useDispatch } from "react-redux";
+import { setDataProduct } from "./app/productSlice";
 
 function App() {
+  const dispatch = useDispatch();
+
   useEffect(() => {
     (async () => {
       const res = await fetch(`http://localhost:8080/product`);
       const resData = await res.json();
       console.log(resData);
-      // dispatch(setDataProduct(resData));
+      dispatch(setDataProduct(resData));
     })();
   }, []);
   return (
