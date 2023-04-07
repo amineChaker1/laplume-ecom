@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import logo from "../assets/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutRedux } from "../app/userSlice";
 import { toast } from "react-hot-toast";
 const Header = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleLogout = () => {
     dispatch(logoutRedux());
     toast("Logout successfully");
@@ -13,19 +14,29 @@ const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
   const userData = useSelector((state) => state.user);
   console.log(userData);
+  const cartItemNumber = useSelector((state) => state.product.cartItem);
   return (
-    <header className="fixed  bg-black shadow-md w-full h-16 px-2 md:px-4">
+    <header
+      style={{ zIndex: 999 }}
+      className="fixed  bg-black shadow-md w-full h-16 px-2 md:px-4"
+    >
       <div className="flex justify-between items-center h-full">
         <div className="h-12 ">
           <img src={logo} className="h-full" alt="" />
         </div>
         <div className="flex items-center gap-3 md:gap-8">
           <nav className="text-white flex gap-3 md:gap-8">
-            <Link to="/">Home</Link>
-            <Link to="/menu">Menu</Link>
-            <Link to="/contact">Contact</Link>
+            <p onClick={() => navigate("/")} className="cursor-pointer">
+              Home
+            </p>
+            <p onClick={() => navigate("/")} className="cursor-pointer">
+              Menu
+            </p>
+            <p onClick={() => navigate("/")} className="cursor-pointer">
+              Contact
+            </p>
           </nav>
-          <div className="relative">
+          <div onClick={() => navigate("/cart")} className="relative">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -42,7 +53,7 @@ const Header = () => {
               />
             </svg>
             <div className="absolute -top-2 -right-2 text-white bg-green-700 h-4 w-3  md:h-5 md:w-4 rounded-full m-0 p-0  text-xs md:text-sm text-center">
-              0
+              {cartItemNumber.length}
             </div>
           </div>
           <div onClick={() => setShowMenu(!showMenu)}>
@@ -71,22 +82,22 @@ const Header = () => {
               <div className="absolute right-2 bg-white py-2 px-2 rounded-lg shadow drop-shadow-md">
                 {userData.image ? (
                   userData.email === import.meta.env.VITE_ADMIN_EMAIL && (
-                    <Link
-                      to={"new"}
-                      className="whitespace-nowrap cursor-pointer px-2"
+                    <p
+                      onClick={() => navigate("/new")}
+                      className="whitespace-nowrap cursor-pointer px-2 mb-0"
                     >
                       New product
-                    </Link>
+                    </p>
                   )
                 ) : (
-                  <Link
+                  <p
+                    onClick={() => navigate("/signup")}
                     to="/signup"
                     className="whitespace-nowrap cursor-pointer"
                   >
                     Signup
-                  </Link>
+                  </p>
                 )}{" "}
-                <br />
                 {userData.image ? (
                   <p
                     className="cursor-pointer whitespace-nowrap "
@@ -95,9 +106,12 @@ const Header = () => {
                     Logout ({userData.firstName}){" "}
                   </p>
                 ) : (
-                  <Link to="login" className="whitespace-nowrap cursor-pointer">
+                  <p
+                    onClick={() => navigate("/login")}
+                    className="whitespace-nowrap cursor-pointer"
+                  >
                     Login
-                  </Link>
+                  </p>
                 )}
               </div>
             )}

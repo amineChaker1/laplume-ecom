@@ -4,13 +4,13 @@ const FilterProduct = ({ category, onClick, isActive }) => {
   return (
     <div onClick={onClick}>
       <div
-        className={`text-3xl p-5  rounded-full cursor-pointer ${
-          isActive ? "bg-red-600 text-white" : "bg-yellow-500"
+        className={`text-xl  rounded-full cursor-pointer ${
+          isActive ? " text-green-600 font-bold underline" : "text-black"
         }`}
       >
         {category}
       </div>
-      <p className="text-center font-medium my-1 capitalize">{category}</p>
+      <p className="text-center font-medium my-1 capitalize"></p>
     </div>
   );
 };

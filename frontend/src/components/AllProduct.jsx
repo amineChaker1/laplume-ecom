@@ -29,9 +29,11 @@ const AllProduct = ({ heading }) => {
 
   return (
     <div className="my-5">
-      <h2 className="font-bold text-2xl text-slate-800 mb-4">{heading}</h2>
+      <h2 className="font-bold text-center text-2xl text-green-600 mb-4">
+        {heading}
+      </h2>
 
-      <div className="flex gap-4 justify-center overflow-scroll scrollbar-none">
+      <div className="flex gap-4 justify-center ">
         {categoryList[0] ? (
           categoryList.map((el) => {
             return (

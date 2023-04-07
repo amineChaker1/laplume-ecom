@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import CartProduct from "../component/cartProduct";
-import emptyCartImage from "../assest/empty.gif";
+import CartProduct from "../components/cartProduct";
+import emptyCartImage from "../assets/empty.gif";
+import Header from "../components/Header";
+import Checkout from "../components/Checkout";
 
 const Cart = () => {
   const productCartItem = useSelector((state) => state.product.cartItem);
   console.log(productCartItem);
-
+  const [showCheckout, setShowCheckout] = useState(false);
   const totalPrice = productCartItem.reduce(
     (acc, curr) => acc + parseInt(curr.total),
     0
@@ -17,57 +19,71 @@ const Cart = () => {
   );
   return (
     <>
-      <div className="p-2 md:p-4">
-        <h2 className="text-lg md:text-2xl font-bold text-slate-600">
-          Your Cart Items
-        </h2>
+      <div className=" ">
+        <Header />
+        <div className="h-5  bg-black md:h-24"></div>
+        <div className="pt-16 h-[100vh] bg-black p-2 md:p-4">
+          <h2 className="text-lg md:text-2xl font-bold text-black">
+            Your Cart Items
+          </h2>
 
-        {productCartItem[0] ? (
-          <div className="my-4 flex gap-3">
-            {/* display cart items  */}
-            <div className="w-full max-w-3xl ">
-              {productCartItem.map((el) => {
-                return (
-                  <CartProduct
-                    key={el._id}
-                    id={el._id}
-                    name={el.name}
-                    image={el.image}
-                    category={el.category}
-                    qty={el.qty}
-                    total={el.total}
-                    price={el.price}
-                  />
-                );
-              })}
-            </div>
+          {productCartItem[0] ? (
+            <div className="grid bg-black grid-cols-1 md:grid-cols-2 ">
+              <div className="my-4 flex gap-3">
+                {/* display cart items  */}
+                <div className="w-full  max-w-3xl ">
+                  {productCartItem.map((el) => {
+                    return (
+                      <CartProduct
+                        key={el._id}
+                        id={el._id}
+                        name={el.name}
+                        image={el.image}
+                        category={el.category}
+                        qty={el.qty}
+                        total={el.total}
+                        price={el.price}
+                      />
+                    );
+                  })}
+                </div>
 
-            {/* total cart item  */}
-            <div className="w-full max-w-md  ml-auto">
-              <h2 className="bg-blue-500 text-white p-2 text-lg">Summary</h2>
-              <div className="flex w-full py-2 text-lg border-b">
-                <p>Total Qty :</p>
-                <p className="ml-auto w-32 font-bold">{totalQty}</p>
+                {/* total cart item  */}
               </div>
-              <div className="flex w-full py-2 text-lg border-b">
-                <p>Total Price</p>
-                <p className="ml-auto w-32 font-bold">
-                  <span className="text-red-500">₹</span> {totalPrice}
-                </p>
+              <div className="w-full  text-white max-w-md  ml-auto">
+                <h2 className="bg-black text-white  text-lg">Summary</h2>
+                <div className="flex w-full py-2 text-lg border-b">
+                  <p>Total Qty :</p>
+                  <p className="ml-auto w-32 font-bold">{totalQty}</p>
+                </div>
+                <div className="flex w-full py-2 text-lg border-b">
+                  <p>Total Price</p>
+                  <p className="ml-auto w-32 font-bold">
+                    {totalPrice} <span className="text-green-600">DA</span>
+                  </p>
+                </div>
+                <button
+                  onClick={() => setShowCheckout(!showCheckout)}
+                  className={`${
+                    showCheckout
+                      ? "bg-black border border-white"
+                      : "bg-green-600"
+                  } w-full text-lg rounded-md mt-4 font-bold py-2 text-white`}
+                >
+                  {showCheckout ? "Annuler" : "Payment"}
+                </button>
+                <div className="bg-black">{showCheckout && <Checkout />}</div>
               </div>
-              <button className="bg-red-500 w-full text-lg font-bold py-2 text-white">
-                Payment
-              </button>
             </div>
-          </div>
-        ) : (
-          <>
-            <div className="flex w-full justify-center items-center flex-col">
-              <img src={emptyCartImage} className="w-full max-w-sm" />
-              <p className="text-slate-500 text-3xl font-bold">Empty Cart</p>
-            </div>
-          </>
-        )}
+          ) : (
+            <>
+              <div className="flex w-full justify-center items-center flex-col">
+                <img src={emptyCartImage} className="w-full max-w-sm" />
+                <p className="text-slate-500 text-3xl font-bold">Empty Cart</p>
+              </div>
+            </>
+          )}
+        </div>
       </div>
     </>
   );

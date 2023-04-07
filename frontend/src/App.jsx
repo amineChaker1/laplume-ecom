@@ -12,6 +12,7 @@ import Signup from "./pages/Signup";
 import NewProduct from "./pages/NewProduct";
 import { useDispatch, useSelector } from "react-redux";
 import { setDataProduct } from "./app/productSlice";
+import Cart from "./pages/Cart";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,9 +31,10 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/new" element={<NewProduct />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/menu" element={<Menu />} />
+        <Route path="/menu/:filterby" element={<Menu />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>

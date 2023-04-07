@@ -28,64 +28,68 @@ const Home = () => {
     <div>
       <Header />
       <div className="pt-16  min-h-[calc(100vh)]">
-        <div className="p-2 md:p-4 bg-black">
-          <div className="md:flex gap-4 py-2">
-            <div className="md:w-1/2">
-              <div className="flex gap-3 text-white bg-black border-2 border-white w-28 px-2 items-center rounded-full">
-                <p className="text-sm font-medium text-white">Livraison</p>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="w-6 h-6"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"
-                  />
-                </svg>
-              </div>
-              <h2 className="text-4xl text-white md:text-7xl font-bold py-3">
-                The Fasted Delivery in{" "}
-                <span className="text-green-500 text-">Your Home</span>
-              </h2>
-              <p className="py-3 text-white text-base ">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries
-              </p>
-              <button className="font-bold bg-green-500 text-white px-4 py-2 rounded-md">
-                Order Now
-              </button>
+        <div className=" bg-white">
+          <div className="relative bg-black">
+            <div className="absolute inset-x-0 bottom-0">
+              <svg
+                viewBox="0 0 224 12"
+                fill="currentColor"
+                className="w-full -mb-1 text-white"
+                preserveAspectRatio="none"
+              >
+                <path d="M0,0 C48.8902582,6.27314026 86.2235915,9.40971039 112,9.40971039 C137.776408,9.40971039 175.109742,6.27314026 224,0 L224,12.0441132 L0,12.0441132 L0,0 Z" />
+              </svg>
             </div>
-
-            <div className="md:w-1/2 flex flex-wrap gap-5 p-4  justify-center">
-              {homeProductCartList[0]
-                ? homeProductCartList.map((el) => {
-                    return (
-                      <HomeCard
-                        key={el._id}
-                        id={el._id}
-                        image={el.image}
-                        name={el.name}
-                        price={el.price}
-                        category={el.category}
-                      />
-                    );
-                  })
-                : loadingArray.map((el, index) => {
-                    return (
-                      <HomeCard
-                        key={index + "loading"}
-                        loading={"Loading..."}
-                      />
-                    );
-                  })}
+            <div className="px-4 text-center py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+              <div className="relative max-w-2xl sm:mx-auto sm:max-w-xl md:max-w-2xl sm:text-center">
+                <h2 className="mb-6 font-sans text-3xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none">
+                  The quick, brown fox
+                  <br className="hidden md:block" />
+                  jumps over a{" "}
+                  <span className="relative inline-block px-2">
+                    <div className="absolute inset-0 transform -skew-x-12 bg-green-700" />
+                    <span className="relative text-white">lazy dog</span>
+                  </span>
+                </h2>
+                <p className="mb-6 text-base text-indigo-100 md:text-lg">
+                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                  accusantium doloremque laudantium, totam rem aperiam, eaque
+                  ipsa quae. explicabo. Sed ut perspiciatis unde omnis.
+                </p>
+                <form className="flex flex-col items-center w-full mb-4 md:flex-row md:px-16">
+                  <input
+                    placeholder="Email"
+                    required
+                    type="text"
+                    className="flex-grow w-full h-12 px-4 mb-3 text-white transition duration-200 border-2 border-green-600 rounded appearance-none md:mr-2 md:mb-0 bg-black focus:border-teal-accent-700 focus:outline-none focus:shadow-outline"
+                  />
+                  <a
+                    href="/"
+                    className="inline-flex items-center justify-center w-full h-12 px-6 font-semibold tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto hover:text-deep-purple-900 bg-green-600 hover:bg-teal-accent-700 focus:shadow-outline focus:outline-none"
+                  >
+                    Subscribe
+                  </a>
+                </form>
+                <p className="max-w-md mb-10 text-xs tracking-wide text-indigo-100 sm:text-sm sm:mx-auto md:mb-16">
+                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                  accusantium doloremque.
+                </p>
+                <a
+                  href="/"
+                  aria-label="Scroll down"
+                  className="flex items-center justify-center w-10 h-10 mx-auto text-white duration-300 transform border border-gray-400 rounded-full hover:text-teal-accent-400 hover:border-teal-accent-400 hover:shadow hover:scale-110"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="currentColor"
+                  >
+                    <path d="M10.293,3.293,6,7.586,1.707,3.293A1,1,0,0,0,.293,4.707l5,5a1,1,0,0,0,1.414,0l5-5a1,1,0,1,0-1.414-1.414Z" />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
 
