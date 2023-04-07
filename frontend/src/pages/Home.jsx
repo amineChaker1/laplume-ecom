@@ -29,66 +29,40 @@ const Home = () => {
       <Header />
       <div className="pt-16  min-h-[calc(100vh)]">
         <div className=" bg-white">
-          <div className="relative bg-black">
-            <div className="absolute inset-x-0 bottom-0">
-              <svg
-                viewBox="0 0 224 12"
-                fill="currentColor"
-                className="w-full -mb-1 text-white"
-                preserveAspectRatio="none"
-              >
-                <path d="M0,0 C48.8902582,6.27314026 86.2235915,9.40971039 112,9.40971039 C137.776408,9.40971039 175.109742,6.27314026 224,0 L224,12.0441132 L0,12.0441132 L0,0 Z" />
-              </svg>
-            </div>
-            <div className="px-4 text-center py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-              <div className="relative max-w-2xl sm:mx-auto sm:max-w-xl md:max-w-2xl sm:text-center">
-                <h2 className="mb-6 font-sans text-3xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none">
-                  The quick, brown fox
-                  <br className="hidden md:block" />
-                  jumps over a{" "}
-                  <span className="relative inline-block px-2">
-                    <div className="absolute inset-0 transform -skew-x-12 bg-green-700" />
-                    <span className="relative text-white">lazy dog</span>
-                  </span>
-                </h2>
-                <p className="mb-6 text-base text-indigo-100 md:text-lg">
-                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                  accusantium doloremque laudantium, totam rem aperiam, eaque
-                  ipsa quae. explicabo. Sed ut perspiciatis unde omnis.
-                </p>
-                <form className="flex flex-col items-center w-full mb-4 md:flex-row md:px-16">
-                  <input
-                    placeholder="Email"
-                    required
-                    type="text"
-                    className="flex-grow w-full h-12 px-4 mb-3 text-white transition duration-200 border-2 border-green-600 rounded appearance-none md:mr-2 md:mb-0 bg-black focus:border-teal-accent-700 focus:outline-none focus:shadow-outline"
-                  />
+          <div class="px-6 bg-black py-12 md:px-12  text-white text-center lg:text-left">
+            <div class="container mx-auto xl:px-32">
+              <div class="grid lg:grid-cols-2 gap-12 flex items-center">
+                <div class="mt-12 lg:mt-0">
+                  <h1 class="text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight mb-12">
+                    Biens et services <br />
+                    <span class="text-green-600">de haute qualité</span>
+                  </h1>
                   <a
-                    href="/"
-                    className="inline-flex items-center justify-center w-full h-12 px-6 font-semibold tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto hover:text-deep-purple-900 bg-green-600 hover:bg-teal-accent-700 focus:shadow-outline focus:outline-none"
+                    class="inline-block px-7 py-3 mr-2 bg-green-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-lg transition duration-150 ease-in-out"
+                    data-mdb-ripple="true"
+                    data-mdb-ripple-color="light"
+                    href="#!"
+                    role="button"
                   >
-                    Subscribe
+                    Get started
                   </a>
-                </form>
-                <p className="max-w-md mb-10 text-xs tracking-wide text-indigo-100 sm:text-sm sm:mx-auto md:mb-16">
-                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                  accusantium doloremque.
-                </p>
-                <a
-                  href="/"
-                  aria-label="Scroll down"
-                  className="flex items-center justify-center w-10 h-10 mx-auto text-white duration-300 transform border border-gray-400 rounded-full hover:text-teal-accent-400 hover:border-teal-accent-400 hover:shadow hover:scale-110"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="12"
-                    height="12"
-                    viewBox="0 0 12 12"
-                    fill="currentColor"
+                  <a
+                    class="inline-block px-7 py-3 bg-transparent text-white font-medium text-sm leading-snug uppercase rounded  focus:outline-none focus:ring-0  transition duration-150 ease-in-out"
+                    data-mdb-ripple="true"
+                    data-mdb-ripple-color="light"
+                    href="#!"
+                    role="button"
                   >
-                    <path d="M10.293,3.293,6,7.586,1.707,3.293A1,1,0,0,0,.293,4.707l5,5a1,1,0,0,0,1.414,0l5-5a1,1,0,1,0-1.414-1.414Z" />
-                  </svg>
-                </a>
+                    Learn more
+                  </a>
+                </div>
+                <div class="mb-12 lg:mb-0">
+                  <img
+                    src="https://i.ibb.co/4dhGdzH/salon.png"
+                    class="w-full rounded-lg shadow-lg"
+                    alt=""
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -96,6 +70,8 @@ const Home = () => {
           <AllProduct heading={"Your Product"} />
         </div>
       </div>
+
+      <h1>Rest</h1>
     </div>
   );
 };
