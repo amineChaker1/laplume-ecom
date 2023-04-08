@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import CartProduct from "../components/cartProduct";
-import emptyCartImage from "../assets/empty.gif";
+import emptyCartImage from "../assets/empty.png";
 import Header from "../components/Header";
 import Checkout from "../components/Checkout";
 
@@ -79,7 +79,7 @@ const Cart = () => {
             <>
               <div className="flex w-full justify-center items-center flex-col">
                 <img src={emptyCartImage} className="w-full max-w-sm" />
-                <p className="text-slate-500 text-3xl font-bold">Empty Cart</p>
+                <p className="text-white text-3xl font-bold">Panier Vide</p>
               </div>
             </>
           )}

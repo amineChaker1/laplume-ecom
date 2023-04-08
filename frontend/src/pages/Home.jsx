@@ -41,19 +41,19 @@ const Home = () => {
                     class="inline-block px-7 py-3 mr-2 bg-green-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-lg transition duration-150 ease-in-out"
                     data-mdb-ripple="true"
                     data-mdb-ripple-color="light"
-                    href="#!"
+                    href="#products"
                     role="button"
                   >
-                    Get started
+                    Nos Produits
                   </a>
                   <a
                     class="inline-block px-7 py-3 bg-transparent text-white font-medium text-sm leading-snug uppercase rounded  focus:outline-none focus:ring-0  transition duration-150 ease-in-out"
                     data-mdb-ripple="true"
                     data-mdb-ripple-color="light"
-                    href="#!"
+                    href="tel:+213661517007"
                     role="button"
                   >
-                    Learn more
+                    Contactez Nous
                   </a>
                 </div>
                 <div class="mb-12 lg:mb-0">
@@ -67,7 +67,7 @@ const Home = () => {
             </div>
           </div>
 
-          <AllProduct heading={"Your Product"} />
+          <AllProduct heading={"Parcourir Nos Produits"} />
         </div>
       </div>
       {/*the newsletter section */}

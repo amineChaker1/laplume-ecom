@@ -39,7 +39,7 @@ const Menu = () => {
               <span>{productDisplay.price}</span>
               <span className="text-green-600 ml-1">DA</span>
             </p>
-            <div className="flex justify-center gap-3">
+            <div className="flex justify-center md:justify-start gap-3">
               <button className="bg-green-600 py-1 mt-2 rounded hover:bg-green-700 min-w-[100px]">
                 Buy
               </button>

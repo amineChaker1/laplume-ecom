@@ -94,10 +94,10 @@ const NewProduct = () => {
             value={data.category}
           >
             <option value={"other"}>Select Category</option>
-            <option value={"parfumes"}>Parfumes</option>
-            <option value={"soin_de_visage"}>Soin de Visage</option>
-            <option value={"fond_de_teint"}>Fond de Teint</option>
-            <option value={"poudre_libre"}>Poudre Libre</option>
+            <option value={"Parfumes"}>Parfumes</option>
+            <option value={"Soin de Visage"}>Soin de Visage</option>
+            <option value={"Fond de Teint"}>Fond de Teint</option>
+            <option value={"Poudre Libre"}>Poudre Libre</option>
           </select>
 
           <label htmlFor="image">

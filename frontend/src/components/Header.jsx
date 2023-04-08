@@ -21,19 +21,16 @@ const Header = () => {
       className="fixed  bg-black shadow-md w-full h-16 px-2 md:px-4"
     >
       <div className="flex justify-between items-center h-full">
-        <div className="h-12 ">
+        <div onClick={() => navigate("/")} className="h-12 cursor-pointer ">
           <img src={logo} className="h-full" alt="" />
         </div>
         <div className="flex items-center gap-3 md:gap-8">
           <nav className="text-white flex gap-3 md:gap-8">
             <p onClick={() => navigate("/")} className="cursor-pointer">
-              Home
+              Accueil
             </p>
-            <a href="#products">Products</a>
-
-            <p onClick={() => navigate("/")} className="cursor-pointer">
-              Contact
-            </p>
+            <a href="#products">Produits</a>
+            <a href="#contact">Contact</a>
           </nav>
           <div onClick={() => navigate("/cart")} className="relative">
             <svg
@@ -94,7 +91,7 @@ const Header = () => {
                     to="/signup"
                     className="whitespace-nowrap cursor-pointer"
                   >
-                    Signup
+                    S'inscrire
                   </p>
                 )}{" "}
                 {userData.image ? (
@@ -102,14 +99,14 @@ const Header = () => {
                     className="cursor-pointer whitespace-nowrap "
                     onClick={handleLogout}
                   >
-                    Logout ({userData.firstName}){" "}
+                    Se déconnecter ({userData.firstName}){" "}
                   </p>
                 ) : (
                   <p
                     onClick={() => navigate("/login")}
                     className="whitespace-nowrap cursor-pointer"
                   >
-                    Login
+                    Connexion
                   </p>
                 )}
               </div>
