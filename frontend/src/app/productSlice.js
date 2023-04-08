@@ -16,9 +16,9 @@ export const productSlice = createSlice({
     addCartItem: (state, action) => {
       const check = state.cartItem.some((el) => el._id === action.payload._id);
       if (check) {
-        toast("Already Item in Cart");
+        toast("Produit Déjà Dans Le Panier");
       } else {
-        toast("Item Add successfully");
+        toast("Produit Ajouté Avec Succès");
         const total = action.payload.price;
         state.cartItem = [
           ...state.cartItem,
@@ -27,7 +27,7 @@ export const productSlice = createSlice({
       }
     },
     deleteCartItem: (state, action) => {
-      toast("one Item Delete");
+      toast("un élément supprimer");
       const index = state.cartItem.findIndex((el) => el._id === action.payload);
       state.cartItem.splice(index, 1);
       console.log(index);

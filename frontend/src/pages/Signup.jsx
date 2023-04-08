@@ -56,10 +56,12 @@ const Signup = () => {
           navigate("/login");
         }
       } else {
-        alert("password and confirm password not equal");
+        alert(
+          "le mot de passe et le mot de passe de confirmation ne sont pas identiques"
+        );
       }
     } else {
-      alert("Please Enter required fields");
+      alert("Veuillez saisir les champs obligatoires");
     }
   };
   const handleUploadProfileImage = async (e) => {
@@ -103,7 +105,7 @@ const Signup = () => {
             className="w-full py-3 text-white flex flex-col"
             onSubmit={handleSubmit}
           >
-            <label htmlFor="firstName">First Name</label>
+            <label htmlFor="firstName">Nom</label>
             <input
               type={"text"}
               id="firstName"
@@ -113,7 +115,7 @@ const Signup = () => {
               onChange={handleOnChange}
             />
 
-            <label htmlFor="lastName">Last Name</label>
+            <label htmlFor="lastName">Prénom</label>
             <input
               type={"text"}
               id="lastName"
@@ -133,7 +135,7 @@ const Signup = () => {
               onChange={handleOnChange}
             />
 
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">Mot de Pass</label>
             <div className="flex px-2 py-1  rounded mt-1 mb-2 focus-within:outline bg-black border-2 border-green-500 focus-within:outline-green-500">
               <input
                 type={showPassword ? "text" : "password"}
@@ -186,7 +188,7 @@ const Signup = () => {
               </span>
             </div>
 
-            <label htmlFor="confirmpassword">Confirm Password</label>
+            <label htmlFor="confirmpassword">Confirmer Mot de Pass</label>
             <div className="flex px-2 py-1 bg-black border-2 border-green-500 focus-within:outline-green-500 rounded mt-1 mb-2  focus-within:outline ">
               <input
                 type={showConfirmPassword ? "text" : "password"}
@@ -240,13 +242,13 @@ const Signup = () => {
             </div>
 
             <button className="w-full max-w-[150px] m-auto  bg-green-600 hover:bg-green-800 cursor-pointer  text-white text-xl font-medium text-center py-1 rounded-full mt-4">
-              Sign up
+              S'inscrire
             </button>
           </form>
           <p className="text-left text-white text-sm mt-2">
-            Already have account ?{" "}
+            Vous avez déjà un compte ?{" "}
             <Link to={"/login"} className="text-green-500 underline">
-              Login
+              Connexion
             </Link>
           </p>
         </div>

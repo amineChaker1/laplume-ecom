@@ -82,7 +82,7 @@ const Login = () => {
               onChange={handleOnChange}
             />
 
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">Mot de Pass</label>
             <div className="flex px-2 py-1  rounded mt-1 mb-2 focus-within:outline bg-black border-2 border-green-500 focus-within:outline-green-500">
               <input
                 type={showPassword ? "text" : "password"}
@@ -136,13 +136,13 @@ const Login = () => {
             </div>
 
             <button className="w-full max-w-[150px] m-auto  bg-green-600 hover:bg-green-800 cursor-pointer  text-white text-xl font-medium text-center py-1 rounded-full mt-4">
-              Log In
+              Connecter
             </button>
           </form>
           <p className="text-left text-white text-sm mt-2">
-            Dont Have An Acoount ?{" "}
+            Vous n'avez pas de compte ?{" "}
             <Link to={"/signup"} className="text-green-500 underline">
-              Signup
+              S'inscrire
             </Link>
           </p>
         </div>
