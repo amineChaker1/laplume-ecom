@@ -29,9 +29,8 @@ const Header = () => {
             <p onClick={() => navigate("/")} className="cursor-pointer">
               Home
             </p>
-            <p onClick={() => navigate("/")} className="cursor-pointer">
-              Menu
-            </p>
+            <a href="#products">Products</a>
+
             <p onClick={() => navigate("/")} className="cursor-pointer">
               Contact
             </p>

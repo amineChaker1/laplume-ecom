@@ -28,7 +28,7 @@ const AllProduct = ({ heading }) => {
   const loadingArrayFeature = new Array(10).fill(null);
 
   return (
-    <div className="my-5">
+    <div id="products" className="my-12">
       <h2 className="font-bold text-center text-2xl text-green-600 mb-4">
         {heading}
       </h2>
