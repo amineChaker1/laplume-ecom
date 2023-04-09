@@ -20,7 +20,7 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      const res = await fetch(`http://localhost:8080/product`);
+      const res = await fetch(`https://laplume-3llv.onrender.com/product`);
       const resData = await res.json();
       console.log(resData);
       dispatch(setDataProduct(resData));

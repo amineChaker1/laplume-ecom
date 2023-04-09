@@ -40,13 +40,16 @@ const Signup = () => {
     const { firstName, email, password, confirmPassword } = data;
     if (firstName && email && password && confirmPassword) {
       if (password === confirmPassword) {
-        const fetchData = await fetch("http://localhost:8080/signup", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(data),
-        });
+        const fetchData = await fetch(
+          "https://laplume-3llv.onrender.com/signup",
+          {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(data),
+          }
+        );
 
         const dataRes = await fetchData.json();
 

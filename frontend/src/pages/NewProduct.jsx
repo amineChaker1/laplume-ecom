@@ -41,13 +41,16 @@ const NewProduct = () => {
     const { name, image, category, price } = data;
 
     if (name && image && category && price) {
-      const fetchData = await fetch("http://localhost:8080/uploadProduct", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      const fetchData = await fetch(
+        "https://laplume-3llv.onrender.com/uploadProduct",
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
 
       const fetchRes = await fetchData.json();
 

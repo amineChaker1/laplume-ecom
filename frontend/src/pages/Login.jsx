@@ -35,7 +35,7 @@ const Login = () => {
     e.preventDefault();
     const { email, password } = data;
     if (email && password) {
-      const fetchData = await fetch("http://localhost:8080/login", {
+      const fetchData = await fetch("https://laplume-3llv.onrender.com/login", {
         method: "POST",
         headers: {
           "content-type": "application/json",
