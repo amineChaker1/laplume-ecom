@@ -2,10 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import Header from "../components/Header";
 import { useSelector } from "react-redux";
 import laplume from "../assets/logo-removebg-preview.png";
-import CardFeature from "../components/CardFeature";
-import FilterProduct from "../components/FilterProduct";
+
 import AllProduct from "../components/AllProduct";
-import HomeCard from "../components/Homecard";
 
 const Home = () => {
   const productData = useSelector((state) => state.product.productList);
