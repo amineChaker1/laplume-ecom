@@ -34,18 +34,15 @@ app.get("/", (req, res) => {
 
 //sign up
 app.post("/signup", async (req, res) => {
-  console.log(req.body);
   const { email } = req.body;
 
   userModel.findOne({ email: email }, (err, result) => {
-    console.log(result);
-    console.log(err);
     if (result) {
-      res.send({ message: "Email id is already register", alert: false });
+      res.send({ message: "Email Est Déjà Enregistré", alert: false });
     } else {
       const data = userModel(req.body);
       const save = data.save();
-      res.send({ message: "Successfully sign up", alert: true });
+      res.send({ message: "Bienvenu", alert: true });
     }
   });
 });
@@ -62,21 +59,45 @@ app.post("/login", (req, res) => {
         email: result.email,
         image: result.image,
       };
-      console.log(dataSend);
+
       res.send({
-        message: "Login is successfully",
+        message: "Bienvenu",
         alert: true,
         data: dataSend,
       });
     } else {
       res.send({
-        message: "Email is not available, please sign up",
+        message: "L'e-mail n'est pas disponible, veuillez vous inscrire",
         alert: false,
       });
     }
   });
 });
+//product section
 
+const schemaProduct = mongoose.Schema({
+  name: String,
+  category: String,
+  image: String,
+  price: String,
+  description: String,
+});
+const productModel = mongoose.model("product", schemaProduct);
+
+//save product in data
+//api
+app.post("/uploadProduct", async (req, res) => {
+  const data = await productModel(req.body);
+  const datasave = await data.save();
+
+  res.send({ message: "Upload successfully" });
+});
+
+//
+app.get("/product", async (req, res) => {
+  const data = await productModel.find({});
+  res.send(JSON.stringify(data));
+});
 //connection
 app.listen(8080, () => {
   console.log("server started");

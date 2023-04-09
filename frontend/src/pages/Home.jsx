@@ -29,7 +29,7 @@ const Home = () => {
       <Header />
       <div className="pt-16  min-h-[calc(100vh)]">
         <div className=" bg-white">
-          <div class="px-6 bg-black py-12 md:px-12  text-white text-center lg:text-left">
+          <div class="px-2 bg-black py-12 md:px-12  text-white text-center lg:text-left">
             <div class="container mx-auto xl:px-32">
               <div class="grid lg:grid-cols-2 gap-12 flex items-center">
                 <div class="mt-12 lg:mt-0">
@@ -56,7 +56,7 @@ const Home = () => {
                     Contactez Nous
                   </a>
                 </div>
-                <div class="mb-12 lg:mb-0">
+                <div class="mb-12 px-4 lg:mb-0">
                   <img
                     src="https://i.ibb.co/4dhGdzH/salon.png"
                     class="w-full rounded-lg shadow-lg"
@@ -128,7 +128,8 @@ const Home = () => {
           class="relative overflow-hidden bg-no-repeat bg-cover"
           style={{
             backgroundPosition: "50%",
-            backgroundImage: "url('https://i.ibb.co/4dhGdzH/salon.png')",
+            backgroundImage:
+              "url('https://i.ibb.co/rFbzXS4/hope-rivers-MSg-LEgd-IUi-A-unsplash.jpg')",
             height: "400px",
           }}
         ></div>
