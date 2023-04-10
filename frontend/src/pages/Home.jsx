@@ -2,10 +2,43 @@ import React, { useEffect, useRef, useState } from "react";
 import Header from "../components/Header";
 import { useSelector } from "react-redux";
 import laplume from "../assets/logo-removebg-preview.png";
-
+import emailjs from "@emailjs/browser";
 import AllProduct from "../components/AllProduct";
+import { toast } from "react-hot-toast";
 
 const Home = () => {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_kcbbnkc",
+        "template_0krutnb",
+        form.current,
+        "uD73Iiehdmx2nj9_T"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          toast.success("Email Envoyé", {
+            style: {
+              border: "1px solid #43a047",
+              padding: "16px",
+              color: "#000000",
+            },
+            iconTheme: {
+              primary: "#43a047",
+              secondary: "#FFFAEE",
+            },
+          });
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
   const productData = useSelector((state) => state.product.productList);
   const homeProductCartList = productData.slice(1, 5);
   const homeProductCartListVegetables = productData.filter(
@@ -220,7 +253,7 @@ const Home = () => {
               </div>
             </div>
             <div class="max-w-[700px] mx-auto">
-              <form>
+              <form ref={form} onSubmit={sendEmail}>
                 <div class="form-group mb-6">
                   <input
                     type="text"
@@ -239,12 +272,13 @@ const Home = () => {
               m-0
               focus:text-gray-700 focus:bg-white focus:border-green-600 focus:outline-none"
                     id="exampleInput7"
-                    placeholder="Name"
+                    name="from_name"
+                    placeholder="Nom"
                   />
                 </div>
                 <div class="form-group mb-6">
                   <input
-                    type="email"
+                    type="tel"
                     class="form-control block
               w-full
               px-3
@@ -260,7 +294,8 @@ const Home = () => {
               m-0
               focus:text-gray-700 focus:bg-white focus:border-green-600 focus:outline-none"
                     id="exampleInput8"
-                    placeholder="Email address"
+                    name="num"
+                    placeholder="Numero"
                   />
                 </div>
                 <div class="form-group mb-6">
@@ -284,6 +319,7 @@ const Home = () => {
             "
                     id="exampleFormControlTextarea13"
                     rows="3"
+                    name="message"
                     placeholder="Message"
                   ></textarea>
                 </div>
